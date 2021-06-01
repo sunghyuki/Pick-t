@@ -27,6 +27,23 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+
+  licenseNumber: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+
+  licensePrimaryKey: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+
+  licenseType: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);

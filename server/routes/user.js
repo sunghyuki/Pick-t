@@ -9,7 +9,16 @@ const { token } = require("morgan");
 
 //회원가입 API
 router.post("/users", async (req, res, next) => {
-  const { userName, email, password, nickname, phoneNumber } = req.body;
+  const {
+    userName,
+    email,
+    password,
+    nickname,
+    phoneNumber,
+    licenseNumber,
+    licensePrimaryKey,
+    licenseType,
+  } = req.body;
 
   try {
     let user_exits = await User.findOne({ email: email });
@@ -31,6 +40,9 @@ router.post("/users", async (req, res, next) => {
 
     user.nickname = nickname;
     user.phoneNumber = phoneNumber;
+    user.licenseNumber = licenseNumber;
+    user.licensePrimaryKey = licensePrimaryKey;
+    user.licenseType = licenseType;
 
     await user.save();
 
