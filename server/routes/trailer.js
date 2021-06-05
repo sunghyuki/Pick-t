@@ -12,7 +12,10 @@ router.post("/trailers", user_jwt, async (req, res, next) => {
       trailerPhoto: req.body.trailerPhoto,
       trailerName: req.body.trailerName,
       license: req.body.license,
-      rentalPlace: req.body.rentalPlace,
+      rentalPlace: {
+        name: req.body.rentalPlace.name,
+        coordinates: req.body.rentalPlace.coordinates,
+      },
       cost: req.body.cost,
       capacity: req.body.capacity,
       facilities: req.body.facilities,
