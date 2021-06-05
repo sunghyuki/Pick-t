@@ -15,8 +15,8 @@ router.post("/trailers", user_jwt, async (req, res, next) => {
       rentalPlace: {
         name: req.body.rentalPlace.name,
         location: {
-          type: req.body.rentalPlace.type,
-          coordinates: req.body.rentalPlace.coordinates,
+          type: req.body.rentalPlace.location.type,
+          coordinates: req.body.rentalPlace.location.coordinates,
         },
       },
       cost: req.body.cost,
