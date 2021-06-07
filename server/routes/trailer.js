@@ -42,6 +42,34 @@ router.post("/trailers", user_jwt, async (req, res, next) => {
   }
 });
 
+//지도 핀 클릭 시 해당 대여점 트레일러 정보 호출 API
+router.get("/rentalplace/:rentalPlace", user_jwt, async (req, res, next) => {
+  try {
+    const trailers = await Trailer.find({
+      "rentalPlace.name": req.params.rentalPlace,
+    });
+
+    const user = req.user.id;
+
+    if (trailers.length == 0) {
+      res.status(400).json({
+        success: false,
+        msg: "Trailer not exists",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      totalNumberOfTrailers: trailers.length,
+      user: user,
+      trailer: trailers,
+      msg: "Successfully fetched",
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 //메인화면 모든 트레일러 정보 호출 API
 router.get("/trailers", user_jwt, async (req, res, next) => {
   try {
