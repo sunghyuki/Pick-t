@@ -24,13 +24,14 @@ router.post(
         trailerPhoto: imageName,
         trailerName: req.body.trailerName,
         license: req.body.license,
-        rentalPlace: {
-          name: req.body.rentalPlace.name,
-          location: {
-            type: req.body.rentalPlace.location.type,
-            coordinates: req.body.rentalPlace.location.coordinates,
-          },
-        },
+        rentalPlace: req.body.rentalPlace,
+        // {
+        //   name: req.body.rentalPlace.name,
+        //   location: {
+        //     type: req.body.rentalPlace.location.type,
+        //     coordinates: req.body.rentalPlace.location.coordinates,
+        //   },
+        // },
         cost: req.body.cost,
         capacity: req.body.capacity,
         facilities: req.body.facilities,
